@@ -6,6 +6,11 @@
  * @since 	SimpleMag 1.0
 **/
 
+/* Force SSl detection */
+if (stripos(get_option('siteurl'), 'https://') === 0) {
+    $_SERVER['HTTPS'] = 'on';
+}
+
 /* Content Width */
 if ( ! isset( $content_width ) ) $content_width = 690; /* pixels */
 
@@ -82,24 +87,24 @@ add_theme_support( 'automatic-feed-links' );
 
 
 /*  Post Formats */
-add_theme_support( 'post-formats', 
-		array( 
+add_theme_support( 'post-formats',
+		array(
 			'video',
 			'gallery',
 			'audio'
-		) 
+		)
 );
 
 
 /* Define sidebars */
 if (function_exists('register_sidebars')) {
-	
+
 	// Sidebar for blog section of the site
 	register_sidebar(
 	   array(
 		'name' => __( 'Magazine', 'themetext' ),
 		'id' => 'sidebar-1',
-		'description'   => __( 'Sidebar for categories and single posts', 'themetext' ),		   
+		'description'   => __( 'Sidebar for categories and single posts', 'themetext' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h3>',
@@ -109,7 +114,7 @@ if (function_exists('register_sidebars')) {
 
 	register_sidebar(
 	   array(
-		'name' => __( 'Pages', 'themetext' ),  
+		'name' => __( 'Pages', 'themetext' ),
 		'id' => 'sidebar-2',
 		'description'   => __( 'Sidebar for static pages', 'themetext' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -121,7 +126,7 @@ if (function_exists('register_sidebars')) {
 
 	register_sidebar(
 	   array(
-		'name' => __( 'Footer Area One', 'themetext' ),  
+		'name' => __( 'Footer Area One', 'themetext' ),
 		'id' => 'sidebar-3',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
@@ -129,7 +134,7 @@ if (function_exists('register_sidebars')) {
 		'after_title' => '</h3>',
 	   )
 	);
-	
+
 	register_sidebar(
 	   array(
 		'name' => __( 'Footer Area Two', 'themetext' ),
@@ -140,10 +145,10 @@ if (function_exists('register_sidebars')) {
 		'after_title' => '</h3>',
 	   )
 	);
-	
+
 	register_sidebar(
 	   array(
-		'name' => __( 'Footer Area Three', 'themetext' ),  
+		'name' => __( 'Footer Area Three', 'themetext' ),
 		'id' => 'sidebar-5',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
